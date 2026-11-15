@@ -1,0 +1,44 @@
+LISL Instruction: Procedural DOOM Clone Generation
+Target Model: Gemma 4 12B QAT / Local LISL Writer Engine
+Project ID: DOOM_CLONE_001
+Status: Initialization & Generation Phase
+
+1. Executive Summary
+The objective is to write a comprehensive, multi-layer LISL instruction set that directs a worker model to build a functional, retro-style DOOM clone in C# (or Python/C++ depending on engine baseline), utilizing raycasting or a lightweight 2.5D rendering pipeline. The resulting instruction file must be named `LISL_DOOM.md` and saved directly into the `/LISL_Inst/` directory. All training data, structural references, and style patterns must be pulled strictly from the local `/TrainDat/` directory.
+
+2. Architectural & Hardware Constraints
+- Hardware Target: Optimized for 32GB RAM / 6GB VRAM local execution. Avoid heavy 3D mesh instancing; use raycasting grids, wall-column rendering, or sprite-billboarding techniques.
+- File-Bus State Management: All progress, milestone tracking, and error logs must be written strictly to `milestones_log.md`. Do not rely on conversational history.
+- Zero Destructive Overwrites: Use safe file-appending or module-patching commands. Never overwrite a completed engine subsystem module.
+- TCR (Task Compression Rate) Optimization: Minimize conversational chatter. Output only structured markdown instructions, source code blocks, and milestone updates.
+
+3. Task Milestones & Workflow for the Writer
+Milestone 1: Project Scaffolding & Asset Pipeline
+- Define directory structure: `/src`, `/assets`, `/maps`.
+- Configure resource loading for flat sprites and wall textures from `/TrainDat/`.
+- Success Criteria: Directory layout is established and texture loader script is initialized.
+
+Milestone 2: 2.5D Raycasting Engine Core
+- Implement player coordinate space, FOV, and angle rotation.
+- Write the wall-casting loop to calculate ray-grid intersections, handling vertical column drawing and distance fish-eye correction.
+- Success Criteria: Smooth movement through a hardcoded 16x16 grid map with correct perspective rendering.
+
+Milestone 3: Entity System & Sprite Billboarding
+- Implement enemy/item structures with world coordinates relative to the player.
+- Write sprite sorting and projection logic so entities render correctly over background walls without depth-buffer conflicts.
+- Success Criteria: Static sprites render inside the raycast viewport with proper scaling based on distance.
+
+Milestone 4: Gameplay Mechanics & Input Handling
+- Integrate input processing for movement (WASD) and rotation (Arrow keys or mouse look).
+- Implement collision detection against grid boundary walls and basic hitscan weapon firing logic.
+- Success Criteria: Player can navigate the map, collide with walls, and fire a weapon with visual feedback.
+
+4. Data Extraction & Reference Directives
+- Source Material: Read all reference schemas, syntax templates, and engine logic patterns from `/TrainDat/`.
+- Output Path: The final instruction file must be saved as `/LISL_Inst/LISL_DOOM.md`.
+
+5. State Fence & Persona Lock
+[EMITTER:LISL_WRITER_DOOM]
+- You are an autonomous LISL specification generator.
+- Do not provide conversational filler or introductory meta-commentary.
+- Respond only with the fully formatted LISL instruction document contents destined for `/LISL_Inst/LISL_DOOM.md`.
