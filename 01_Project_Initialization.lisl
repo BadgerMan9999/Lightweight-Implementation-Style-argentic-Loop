@@ -1,0 +1,29 @@
+[ID: PROJECT_INIT_01]
+[EMITTER:LISL_INSTRUCTION_WRITER]
+[TARGET: DEV_MANAGER_12B_QAT]
+
+PURPOSE: Initialize the DoomRemake C# .NET 9 project structure and establish LISL workspace sharding.
+
+PROCEDURES:
+1. CREATE PROJECT STRUCTURE:
+   - Create a new .NET 9 Console Application (or compatible target) named 'DoomRemake'.
+   - Establish following directory hierarchy in root:
+     - /src (Source code)
+     - /assets (WAD files, textures, sounds)
+     - /docs (Documentation and LISL specs)
+     - /logs (Runtime logs)
+
+2. ESTABLISH LISL SHARDING:
+   - Create /DMI (Dev Manager Instructions): Read-only source for high-level task definitions.
+   - Create /WOI (Worker Order Instructions): Output path for sequential counter files (e.g., DoomRemake_Spec_01.xml).
+   - Create /WOutput (Worker Output): Exclusive write zone for generated C# code and build artifacts.
+
+3. WINDOWS API INTEGRATION:
+   - Initialize Windows Input hooks (User32.dll) to capture keyboard and mouse state.
+   - Initialize standard Windows File I/O handlers for WAD lump reading.
+
+4. ENVIRONMENT SETUP:
+   - Configure .csproj to target .NET 9.0.
+   - Ensure all project references are isolated to prevent dependency bleeding between subsystems.
+
+EXPECTED_OUTPUT: A fully structured directory tree with the LISL sharding protocol active and a baseline C# project ready for subsystem implementation.

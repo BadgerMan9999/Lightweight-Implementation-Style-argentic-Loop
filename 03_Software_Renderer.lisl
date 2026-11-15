@@ -1,0 +1,23 @@
+[ID: SOFT_RENDER_01]
+[EMITTER:LISL_INSTRUCTION_WRITER]
+[TARGET: DEV_MANAGER_12B_QAT]
+
+PURPOSE: Develop a pure software rendering pipeline maintaining 35fps fixed-point accuracy.
+
+PROCEDURES:
+1. PIPELINE ARCHITECTURE:
+   - Implement the column/span drawing logic for wall segments.
+   - Create a sprite projection system for handling actors and textures.
+
+2. CORE RENDERING METHODS:
+   - `R_RenderView(player_t* player)`: Main view rendering entry point.
+   - `V_DrawPatch(int x, int y, int lump)`: Draw specific patches based on lump data.
+
+3. ACCURACY CONSTRAINTS:
+   - Use fixed-point arithmetic where necessary to match original Doom engine precision.
+   - Ensure column drawing maintains the correct vertical order and clipping against walls/ceilings.
+
+4. WINDOWS INTEGRATION:
+   - Bind rendering output to a standard Windows surface or swap chain (e.g., via DirectX or OpenGL wrapper, but keeping logic pure software).
+
+EXPECTED_OUTPUT: A functional 2D software renderer capable of projecting sprites and drawing wall columns with fixed-point accuracy.

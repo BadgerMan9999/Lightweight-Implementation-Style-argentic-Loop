@@ -1,0 +1,25 @@
+[ID: NETWORKING_01]
+[EMITTER:LISL_INSTRUCTION_WRITER]
+[TARGET: DEV_MANAGER_12B_QAT]
+
+PURPOSE: Implement a simplified networking architecture for multi-player connectivity.
+
+PROCEDURES:
+1. CONNECTION MODEL:
+   - Design a "Single Room" model: all clients connect to one shared instance.
+   - Avoid lobby systems or complex matchmaking.
+
+2. HOSTING INTEGRATION:
+   - Implement logic to connect to common free hosting services (e.g., via a configurable IP/Port entry).
+   - Provide a simple UI on the Main Menu for entering host details and connecting.
+
+3. PROTOCOL & SYNC:
+   - Port original packet serialization from Chocolate Doom.
+   - Implement tick synchronization to ensure all clients remain in sync with the authoritative game state.
+   - `D_CheckNetGame(void)` and `NetUpdate(void)` logic for periodic state updates.
+
+4. SIMPLICITY CONSTRAINTS:
+   - Minimize overhead; focus on basic connectivity over low-latency delivery.
+   - No complex traffic management or flood protection required (single room assumption).
+
+EXPECTED_OUTPUT: A functional networking module that allows users to connect to a single hosted server from the main menu.

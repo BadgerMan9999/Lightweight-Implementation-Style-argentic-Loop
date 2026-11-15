@@ -1,0 +1,24 @@
+[ID: WAD_MGMT_01]
+[EMITTER:LISL_INSTRUCTION_WRITER]
+[TARGET: DEV_MANAGER_12B_QAT]
+
+PURPOSE: Implement the WAD file management system for C# .NET 9.
+
+PROCEDURES:
+1. DATA STRUCTURES:
+   - Create a `LumpInfo` struct containing name, offset, and size.
+   - Create a `WadFile` class to handle multiple WAD handles simultaneously.
+
+2. FILE HANDLING:
+   - Implement byte-order handling (ensure correct endianness for cross-platform compatibility).
+   - Develop a hashing system for directory lump identification.
+
+3. CORE METHODS:
+   - `W_InitMultipleFiles(char** filenames)`: Initialize file handles and populate the global lump table.
+   - `W_GetLumpInfo(const char* name)`: Retrieve lump metadata from the hash table.
+   - `W_CheckNumForName(const char* name)`: Verify existence of a specific lump.
+
+4. PERFORMANCE:
+   - Use memory mapping or buffered streams to optimize large WAD file access in C#.
+
+EXPECTED_OUTPUT: A functional WAD management library capable of loading and querying lumps from multiple source files.

@@ -1,0 +1,23 @@
+[ID: GAME_TICK_01]
+[EMITTER:LISL_INSTRUCTION_WRITER]
+[TARGET: DEV_MANAGER_12B_QAT]
+
+PURPOSE: Create the deterministic 35 Hz game tick engine.
+
+PROCEDURES:
+1. TICK MANAGEMENT:
+   - Implement a fixed-rate loop (35Hz) using high-resolution timers.
+   - Ensure time steps are consistent regardless of frame rate.
+
+2. ENTITY THINKING:
+   - `P_PlayerThink(player_t* player)`: Handle movement, input processing, and collision checks.
+   - Implement a thinker system for map objects (mobj) to process triggers and environmental interactions.
+
+3. PHYSICS & COLLISION:
+   - Integrate sector trigger detection.
+   - Implement basic physics collision detection against static geometry and other actors.
+
+4. STATE MANAGEMENT:
+   - Maintain global game state variables (e.g., current level, player health, ammo).
+
+EXPECTED_OUTPUT: A deterministic tick engine that processes inputs and updates the world state at a constant 35Hz rate.
