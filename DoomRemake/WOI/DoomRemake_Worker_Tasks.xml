@@ -1,0 +1,105 @@
+[EMITTER:E2B_WORKER_01]
+[TARGET:DOOMREMAKE_FRONTLINE_CODER]
+[ID: DOOMREMAKE_CORE_ENGINE_SPEC]
+
+ROLE: Frontline Coder, DoomRemake Core Engine Implementation
+SUPERVISOR: DEV_MANAGER_12B_QAT
+WORKSPACE: ./WOI/ (Input), ./WOutput/ (Output)
+
+PROJECT_CONTEXT:
+- Project: DoomRemake (.NET 9.0 Console Application)
+- Purpose: Modern C# remake of DOOM with native multiplayer hosting
+- Platform Requirements: Windows API integration, WAD file support
+- Target Deployment: Free cloud tiers (Fly.io, Render, Oracle Cloud Free Tier)
+
+CURRENT_STATE:
+✓ Project structure initialized
+✓ Core subsystems implemented (InputHooks, WadFileHandler, WadLoader)
+✓ LISL sharding protocol established
+✓ DEV_MANAGER specification committed to WOI/
+
+TASKS_TO_COMPLETE:
+
+1. [HIGH PRIORITY] Implement Game Engine Core
+   - Create GameEngine.cs with main game loop
+   - Implement rendering pipeline (OpenGL/DirectX 12)
+   - Add entity-component-system architecture
+   - Integrate InputHooks for player controls
+
+2. [MEDIUM PRIORITY] Network Layer Implementation  
+   - WebSocket server/client for multiplayer hosting
+   - Netcode for GameObjects integration or custom solution
+   - Player synchronization and state replication
+   - Latency compensation and prediction systems
+
+3. [MEDIUM PRIORITY] Asset Loading System
+   - WAD file parser for DOOM lump extraction
+   - Texture atlas generation and management
+   - Sound mixing and spatial audio
+   - Level loading from WAD files
+
+4. [LOW PRIORITY] UI/HUD Rendering
+   - In-game menu system
+   - Health/ammo display
+   - Weapon selection interface
+   - Network status indicators
+
+5. [LOW PRIORITY] Testing & Optimization
+   - Unit tests for all subsystems
+   - Performance profiling and optimization
+   - Cross-platform compatibility testing (Windows focus)
+   - Cloud deployment configuration
+
+DELIVERABLES:
+- Fully functional game engine with rendering pipeline
+- Multiplayer networking layer with hosting capabilities
+- Complete asset loading system supporting standard DOOM WAD files
+- Comprehensive test suite
+- Deployment-ready cloud configuration
+
+OUTPUT_REQUIREMENTS:
+All code must be written to ./WOutput/ with proper organization:
+- WOutput/GameEngine/Core/ - Engine implementation
+- WOutput/Networking/ - Multiplayer systems  
+- WOutput/Assets/ - Asset loading utilities
+- WOutput/UI/ - User interface components
+- WOutput/Tests/ - Unit and integration tests
+
+FILE_NAMING_CONVENTION:
+- Core classes: PascalCase (e.g., GameEngine, Renderer)
+- Subsystems: PascalCase with descriptive names (e.g., NetworkManager)
+- Tests: TestClassName_TestMethod() format
+
+CODE_QUALITY_STANDARDS:
+1. All public APIs must have XML documentation comments
+2. Use async/await for all I/O operations
+3. Implement IDisposable pattern for resource management
+4. Follow C# 12 features (records, collections, primary constructors)
+5. Include error handling with meaningful exceptions
+
+HANDOFF_SIGNALS:
+- Create Finished.md in WOutput/ when all tasks complete
+- Each subsystem should have its own completion marker file
+- Include build logs and test results in WOutput/
+
+VERIFICATION_CHECKLIST:
+[x] Project structure verified (DONE)
+[ ] Core engine implementation complete
+[ ] Rendering pipeline functional
+[ ] Multiplayer networking operational
+[ ] Asset loading system tested
+[ ] UI/HUD rendering working
+[ ] All tests passing
+[ ] Cloud deployment configured
+[ ] Documentation complete
+
+NOTES:
+- Use the existing InputHooks class for all input capture
+- Leverage WadFileHandler for standard DOOM WAD support
+- Follow LISL sharding protocol for task handoff
+- Document all architectural decisions in docs/LISL_Specs/
+
+EMITTER_TAGS_REQUIRED:
+All output files must include [EMITTER:E2B_WORKER_01] at the top.
+
+READY_FOR_EXECUTION: TRUE

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+[EMITTER:DEV_MANAGER_12B_QAT]
+[ID:DoomRemake_Spec_01.xml]
+[TARGET:E2B_WORKER_01]
+
+<ProjectSpecification Version="1.0">
+  <ProjectName>DoomRemake</ProjectName>
+  <TargetFramework>.NET 9.0</TargetFramework>
+  <Description>Modern C# remake of DOOM with native multiplayer hosting</Description>
+  
+  <Subsystems>
+    <Subsystem Name="InputSystem" Status="Initialized">
+      <Description>Captures keyboard and mouse events via Windows User32.dll hooks</Description>
+      <ImplementationFile>Core/InputHooks.cs</ImplementationFile>
+      <Dependencies>
+        <Dependency Name="User32.dll" Type="Windows API" />
+      </Dependencies>
+    </Subsystem>
+    
+    <Subsystem Name="WadFileSystem" Status="Initialized">
+      <Description>Handles WAD file reading and lump extraction</Description>
+      <ImplementationFile>Core/WadFileHandler.cs</ImplementationFile>
+      <Dependencies>
+        <Dependency Name="System.IO" Type=".NET Framework" />
+      </Dependencies>
+    </Subsystem>
+    
+    <Subsystem Name="AssetLoader" Status="Initialized">
+      <Description>Utility class for loading textures and sounds from WAD files</Description>
+      <ImplementationFile>Core/WadLoader.cs</ImplementationFile>
+      <Dependencies>
+        <Dependency Name="WadFileSystem" Type="Internal" />
+      </Dependencies>
+    </Subsystem>
+  </Subsystems>
+
+  <Tasks>
+    <Task Id="TASK_01" Name="Build Project">
+      <Description>Restore NuGet packages and build the solution</Description>
+      <Command>dotnet build src/DoomRemake.csproj</Command>
+      <OutputPath>WOutput/</OutputPath>
+    </Task>
+
+    <Task Id="TASK_02" Name="Run Tests">
+      <Description>Execute unit tests for core subsystems</Description>
+      <Command>dotnet test --no-build</Command>
+      <OutputPath>WOutput/test-results/</OutputPath>
+    </Task>
+
+    <Task Id="TASK_03" Name="Generate Documentation">
+      <Description>Generate API documentation for all public classes and methods</Description>
+      <Tool>dotnet docfx</Tool>
+      <OutputPath>docs/api-docs/</OutputPath>
+    </Task>
+  </Tasks>
+
+  <WorkerInstructions>
+    <Instruction Type="ExecuteSequentially">
+      Execute tasks in order (TASK_01, TASK_02, TASK_03) and write results to WOutput/.
+    </Instruction>
+    
+    <Instruction Type="CompletionSignal">
+      Create Finished.md file in WOutput/ when all tasks are complete.
+    </Instruction>
+  </WorkerInstructions>
+
+  <Verification>
+    <Check Name="BuildSuccess" ExpectedResult="true" />
+    <Check Name="TestsPassed" ExpectedCount="0" FailOnNonZeroExit="false" />
+    <Check Name="DocsGenerated" FileExists="docs/api-docs/index.html" />
+  </Verification>
+
+</ProjectSpecification>

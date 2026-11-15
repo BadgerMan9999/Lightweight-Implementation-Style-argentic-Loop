@@ -1,0 +1,59 @@
+[EMITTER:LISL_INSTRUCTION_WRITER]
+[TARGET:E2B_WORKER_01]
+[ID: DOOMREMAKE_INIT_SPEC_01]
+
+PURPOSE: Initialize DoomRemake project structure and establish LISL workspace sharding.
+
+PROJECT_INFO:
+- Name: DoomRemake
+- Target Framework: .NET 9.0
+- Type: Console Application (Multiplayer Ready)
+- Platform: Windows API Integration with WAD File Support
+
+DIRECTORY_STRUCTURE:
+```
+DoomRemake/
+├── src/                    # Source code directory
+│   ├── DoomRemake.csproj  # Project file (.NET 9.0)
+│   ├── Program.cs         # Application entry point
+│   └── Core/              # Core subsystems
+│       ├── InputHooks.cs  # Windows API input capture (User32.dll)
+│       ├── WadFileHandler.cs  # WAD lump reading utilities
+│       └── WadLoader.cs   # Asset loading utilities
+├── assets/                # Game assets directory
+│   ├── wads/             # DOOM WAD files
+│   ├── textures/         # Texture packs
+│   └── sounds/           # Sound effects and music
+├── docs/                  # Documentation
+│   └── LISL_Specs/       # LISL protocol specifications
+├── logs/                  # Runtime log directory
+├── DMI/                   # Dev Manager Instructions (read-only for workers)
+├── WOI/                   # Worker Order Instructions (output from DEV_MANAGER)
+└── WOutput/               # Worker Output (exclusive write zone)
+
+LISL_SHARDING_PROTOCOL:
+- DMI/: High-level task definitions (DEV_MANAGER writes, workers read)
+- WOI/: Sequential specification files with incremental counters
+- WOutput/: Generated code and build artifacts from worker execution
+
+WINDOWS_API_INTEGRATION:
+1. InputHooks class implements User32.dll keyboard/mouse hooks
+   - Captures key press/release events
+   - Captures mouse clicks, movement, and wheel scrolling
+   - Thread-safe hook management with proper initialization/shutdown
+
+WAD_FILE_HANDLING:
+1. WadFileHandler provides standard file I/O for WAD lumps
+2. Supports PWAD/DOOM format magic numbers
+3. Parses lump directory entries (name, size, file position)
+4. Loads individual lumps by name with error handling
+
+EXPECTED_OUTPUT_STATUS:
+- Directory structure fully established
+- .NET 9.0 project configured with proper dependencies
+- Core subsystems implemented and functional
+- LISL sharding protocol documented and active
+- All files include [EMITTER] tags for tracking
+
+HANDOFF_SIGNAL:
+Worker should create Finished.md in WOutput/ upon completion to signal DEV_MANAGER_12B_QAT for verification.

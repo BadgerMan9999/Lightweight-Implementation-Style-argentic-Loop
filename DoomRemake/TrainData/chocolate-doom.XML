@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ChocolateDoomRepositoryArchive version="1.0">
+  <Metadata>
+    <Repository>chocolate-doom/chocolate-doom</Repository>
+    <Maintainer>Simon Howard (Clean-room historical Doom port)</Maintainer>
+    <TargetLanguage>C# (.NET 9 / Modernized Execution)</TargetLanguage>
+    <Emitter>E2B_WORKER_01</Emitter>
+  </Metadata>
+
+  <Subsystem name="WAD_Management">
+    <Path>src/w_wad.c / src/w_wad.h</Path>
+    <Description>Manages WAD file loading, directory lump hashing, file handles, and byte-order handling for multi-platform compatibility.</Description>
+    <CodePattern><![CDATA[
+// Chocolate Doom WAD parsing structure reference
+void W_InitMultipleFiles(char** filenames);
+lumpinfo_t* W_GetLumpInfo(const char* name);
+int W_CheckNumForName(const char* name);
+    ]]></CodePattern>
+  </Subsystem>
+
+  <Subsystem name="Video_And_Rendering">
+    <Path>src/r_bsp.c / src/r_things.c / src/v_video.c</Path>
+    <Description>Pure software rendering pipeline maintaining exact 35fps fixed-point accuracy. Handles column/span drawing, wall clipping, and sprite projection.</Description>
+    <CodePattern><![CDATA[
+// Software column drawer reference
+void R_RenderView(player_t* player);
+void V_DrawPatch(int x, int y, int lump);
+    ]]></CodePattern>
+  </Subsystem>
+
+  <Subsystem name="Game_Loop_And_Tick">
+    <Path>src/g_game.c / src/p_mobj.c</Path>
+    <Description>Deterministic 35 Hz game tick engine managing player inputs, map object (mobj) thinkers, sector triggers, and physics collision detection.</Description>
+    <CodePattern><![CDATA[
+// Fixed tick rate engine loop
+void G_Ticker(void);
+void P_PlayerThink(player_t* player);
+    ]]></CodePattern>
+  </Subsystem>
+
+  <Subsystem name="Networking_And_Multiplayer">
+    <Path>src/i_net.c / src/d_net.c</Path>
+    <Description>Original packet serialization and tick synchronization loop. Designed for modern C# refactoring into an authoritative client-server architecture suitable for cloud containers.</Description>
+    <CodePattern><![CDATA[
+// Network packet sync reference
+void D_CheckNetGame(void);
+void NetUpdate(void);
+    ]]></CodePattern>
+  </Subsystem>
+</ChocolateDoomRepositoryArchive>

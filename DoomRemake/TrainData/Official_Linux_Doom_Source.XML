@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DoomSourceArchive version="1.0">
+  <Metadata>
+    <Source>Official Linux Doom Source / Clean Architectural Extraction</Source>
+    <TargetLanguage>C# (.NET 9 Modernization Target)</TargetLanguage>
+    <Emitter>E2B_WORKER_01</Emitter>
+  </Metadata>
+
+  <Module name="W_Wad_Parser">
+    <Description>Handles WAD directory lump loading, file offset mapping, and graphic/map asset extraction.</Description>
+    <SourceSnippet><![CDATA[
+// Conceptual C Structure for WAD Parsing
+typedef struct {
+    char identification[4];
+    int numlumps;
+    int infotableofs;
+} __attribute__((packed)) wadinfo_t;
+
+typedef struct {
+    int filepos;
+    int size;
+    char name[8];
+} __attribute((packed)) filelump_t;
+    ]]></SourceSnippet>
+  </Module>
+
+  <Module name="R_BSP_Renderer">
+    <Description>Binary Space Partitioning tree traversal for sector and wall rendering.</Description>
+    <SourceSnippet><![CDATA[
+// Conceptual C Structure for BSP Traversal
+void R_RenderBSPNode(int bspnum) {
+    if (bspnum & NF_SUBSECTOR) {
+        // Render subsector walls and flats
+        return;
+    }
+    // Recursive traversal of near/far nodes
+}
+    ]]></SourceSnippet>
+  </Module>
+
+  <Module name="P_Mobj_Engine">
+    <Description>Map Object (Mobj) state management and physics tick loop.</Description>
+    <SourceSnippet><![CDATA[
+// Conceptual C Structure for Entity Tick
+void P_MobjThinker(mobj_t* mobj) {
+    // Handle movement, gravity, state transitions, and collision checks
+}
+    ]]></SourceSnippet>
+  </Module>
+
+  <Module name="Net_CloudHosting_Stub">
+    <Description>Modernized replacement stub for original IPX/UDP tick networking, adapted for containerized free cloud tiers (Fly.io/Render).</Description>
+    <SourceSnippet><![CDATA[
+// C# Authoritative Server Stub for Cloud Deployment
+public class DoomCloudServer {
+    public async Task StartAuthoritativeTickLoopAsync(CancellationToken token) {
+        // Accept TCP/UDP client socket connections
+        // Process client input commands at fixed 35Hz ticrate
+        // Broadcast world state delta to connected clients
+    }
+}
+    ]]></SourceSnippet>
+  </Module>
+</DoomSourceArchive>

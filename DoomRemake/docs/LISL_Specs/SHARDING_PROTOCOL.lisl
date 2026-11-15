@@ -1,0 +1,42 @@
+[EMITTER:DEV_MANAGER_12B_QAT]
+[TARGET:LISL_SHARDING_PROTOCOL_V1]
+[ID: DOOMREMAKE_LISL_SPEC_01]
+
+PURPOSE: Define the LISL (Logic Inference Script Language) sharding protocol for DoomRemake project automation.
+
+## DIRECTORY STRUCTURE PROTOCOL
+
+### /DMI (Dev Manager Instructions)
+- **Purpose**: Read-only source for high-level task definitions and specifications
+- **Access**: DEV_MANAGER_12B_QAT only (write), read by all workers
+- **File Format**: XML with standardized job specification schema
+- **Naming Convention**: `Dev_Manger_{MODEL_ID}_{JOB_NAME}.XML`
+
+### /WOI (Worker Order Instructions)  
+- **Purpose**: Output path for sequential counter files containing task specifications
+- **Access**: DEV_MANAGER_12B_QAT writes, workers read and execute
+- **File Format**: XML specification documents with incremental counters
+- **Naming Convention**: `DoomRemake_Spec_{NUMBER}.xml`
+
+### /WOutput (Worker Output)
+- **Purpose**: Exclusive write zone for generated C# code, build artifacts, and worker results
+- **Access**: Workers only (write), DEV_MANAGER_12B_QAT reads for verification
+- **File Format**: C#, XML, JSON, or binary as appropriate to subsystem
+- **Naming Convention**: Subsystem-specific with versioning
+
+## SHARDING WORKFLOW
+
+1. **DEV_MANAGER** writes task specification to `/WOI/DoomRemake_Spec_01.xml`
+2. **WORKER** reads specification from `/WOI/`, executes tasks, outputs results to `/WOutput/`
+3. **WORKER** creates `Finished.md` in `/WOutput/` when complete
+4. **DEV_MANAGER** monitors for `Finished.md`, then parses `/WOutput/` for verification
+
+## FILE SIGNATURES
+
+All files must include proper `[EMITTER:...]` tags at the beginning to identify their source and purpose.
+
+## EXPECTED OUTPUT
+
+- Fully structured directory tree with LISL sharding protocol active
+- Baseline C# project ready for subsystem implementation
+- All directories properly initialized with appropriate access permissions
