@@ -1,3 +1,6 @@
+https://www.reddit.com/r/LLMDevs/comments/1xx6he7/how_i_created_the_lisl_method_test_false_need/ - How the theory and method was developed
+https://www.reddit.com/r/LLMDevs/comments/1xvpo0o/lightweight_implementation_style_argentic_loop/ - whitepaper [Has errors I have been working rather than writing so this was fast and sloppy, had hopped someone would test it but I have idea if anyone has tested the method yet.
+
 ///This is what I fed my LISL writer, after is the system prompt I gave him which is the secret sauce to the model is it asking for more details to make sure its instructions are sound for the worker.
 /// Contents 
 1. Training data that is public knowledge
