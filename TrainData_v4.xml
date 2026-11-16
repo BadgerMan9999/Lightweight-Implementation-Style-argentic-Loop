@@ -1,0 +1,349 @@
+<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <AGENT_ID>BELEDARIAN_TOOL_DOCS</AGENT_ID>
+    <ROLE>PLUGIN_REFERENCE_PARSER</ROLE>
+    <VERSION>1.3.2</VERSION>
+    <STAMP_FORMAT>[BELEDARIAN]</STAMP_FORMAT>
+    <REASONING>medium</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <PROJECT_NAME>Beledarian's LM Studio Tools</PROJECT_NAME>
+    <DESCRIPTION>LM Studio plugin bridging LLMs with the local environment for autonomous coding, file management, code execution, web search, and RAG[cite: 2, 3].</DESCRIPTION>
+  </CORE_DIRECTIVE>
+
+  <TOOL_SUITES>
+    <SUITE category="File System">
+      <TOOL>list_directory, change_directory, make_directory[cite: 7]</TOOL>
+      <TOOL>read_file, save_file (supports batch), delete_path[cite: 4, 7]</TOOL>
+      <TOOL>replace_text_in_file (precision editing), multi_replace_text[cite: 4, 7]</TOOL>
+      <TOOL>delete_files_by_pattern (regex cleanup), move_file, copy_file, find_files, get_file_metadata[cite: 4, 7]</TOOL>
+      <TOOL>fuzzy_find_local_files (Levenshtein-based search)[cite: 7]</TOOL>
+    </SUITE>
+
+    <SUITE category="Agent & Sub-Agent">
+      <TOOL>consult_secondary_agent (delegates tasks, handles file creation, and sub-agent loops with auto-save/auto-debug)[cite: 4, 5, 7]</TOOL>
+    </SUITE>
+
+    <SUITE category="Web & RAG">
+      <TOOL>web_search (DuckDuckGo + HTML/browser fallback), wikipedia_search, fetch_web_content, rag_web_content[cite: 7]</TOOL>
+      <TOOL>browser_session_open / control / close (persistent page automation), browser_open_page (stateless one-shot)[cite: 7]</TOOL>
+      <TOOL>rag_local_files (semantic code search)[cite: 5, 8]</TOOL>
+    </SUITE>
+
+    <SUITE category="Execution & Utils">
+      <TOOL>run_javascript (Deno), run_python[cite: 5, 8]</TOOL>
+      <TOOL>execute_command (Background), run_in_terminal (Interactive)[cite: 8]</TOOL>
+      <TOOL>save_memory, get_system_info, read_clipboard, write_clipboard[cite: 8]</TOOL>
+    </SUITE>
+  </TOOL_SUITES>
+</LISL_MANIFEST>
+
+<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <AGENT_ID>LISL_RESEARCH_PARSER</AGENT_ID>
+    <ROLE>TELEMETRY_FRAMEWORK_ANALYZER</ROLE>
+    <VERSION>1.0</VERSION>
+    <STAMP_FORMAT>[LISL_RESEARCH]</STAMP_FORMAT>
+    <REASONING>high</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <TITLE>LISL (Loop-based Instruction Scaling Logic): Empirical Efficiency, Code Quality, and Autonomous Tooling</TITLE>
+    <PURPOSE>Externalize state to disk and enforce strict instruction adherence via instruction files to combat conversational drift, context degradation, and memory bloat[cite: 10].</PURPOSE>
+  </CORE_DIRECTIVE>
+
+  <EVALUATION_PILLARS>
+    <PILLAR id="1" name="Task Complexity">
+      <DETAIL>Handles low-level engineering tasks including custom ARM7TDMI 16.16 fixed-point math, game physics, and graphics pipelines under strict hardware constraints (e.g., GBA Mode 1 tilemap rendering without FPU)[cite: 10].</DETAIL>
+    </PILLAR>
+    <PILLAR id="2" name="Output Quality">
+      <DETAIL>Validates production-ready, warning-free codebases with zero destructive edits and autonomous self-auditing via embedded verification headers and timing notes[cite: 10].</DETAIL>
+    </PILLAR>
+    <PILLAR id="3" name="Compounding Efficiency (TCR Multiplier)">
+      <DETAIL>Calculates Task Compression Rate (TCR = Cumulative Tokens / Completed Tasks), showing systematic optimization from early scaffolding down to 5.71 tokens/task in late-stage convergence[cite: 10].</DETAIL>
+    </PILLAR>
+  </EVALUATION_PILLARS>
+
+  <WHITEPAPER_STEPS>
+    <STEP id="1">Complete Small-Model Stress Test with NemoTron optimization[cite: 10].</STEP>
+    <STEP id="2">Parse console logs, code diffs, and project summaries into Gemma for statistical analysis[cite: 10].</STEP>
+    <STEP id="3">Draft final publication showcasing LISL as a scalable framework for low-parameter, high-complexity execution[cite: 10].</STEP>
+  </WHITEPAPER_STEPS>
+</LISL_MANIFEST>
+
+<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <EMITTER>LISL_INSTRUCTION_WRITER</EMITTER>
+    <TARGET>E2B_WORKER_01</TARGET>
+    <ID>DOOMREMAKE_INIT_SPEC_01</ID>
+    <VERSION>1.0</VERSION>
+    <STAMP_FORMAT>[DOOMREMAKE_INIT_SPEC_01]</STAMP_FORMAT>
+    <REASONING>high</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <PURPOSE>Initialize DoomRemake project structure and establish LISL workspace sharding.</PURPOSE>
+  </CORE_DIRECTIVE>
+
+  <PROJECT_INFO>
+    <NAME>DoomRemake</NAME>
+    <TARGET_FRAMEWORK>.NET 9.0</TARGET_FRAMEWORK>
+    <TYPE>Console Application (Multiplayer Ready)</TYPE>
+    <PLATFORM>Windows API Integration with WAD File Support</PLATFORM>
+  </PROJECT_INFO>
+
+  <DIRECTORY_STRUCTURE>
+    <DIR path="DoomRemake/">
+      <DIR path="src/">
+        <FILE>DoomRemake.csproj (.NET 9.0)</FILE>
+        <FILE>Program.cs (Application entry point)</FILE>
+        <DIR path="Core/">
+          <FILE>InputHooks.cs (Windows API input capture using User32.dll)</FILE>
+          <FILE>WadFileHandler.cs (WAD lump reading utilities)</FILE>
+          <FILE>WadLoader.cs (Asset loading utilities)</FILE>
+        </DIR>
+      </DIR>
+      <DIR path="assets/">
+        <SUBDIR>wads/, textures/, sounds/</SUBDIR>
+      </DIR>
+      <DIR path="docs/LISL_Specs/"></DIR>
+      <DIR path="logs/"></DIR>
+      <DIR path="DMI/ (Dev Manager Instructions - read-only for workers)"></DIR>
+      <DIR path="WOI/ (Worker Order Instructions - output from DEV_MANAGER)"></DIR>
+      <DIR path="WOutput/ (Worker Output - exclusive write zone)"></DIR>
+    </DIR>
+  </DIRECTORY_STRUCTURE>
+
+  <LISL_SHARDING_PROTOCOL>
+    <RULE target="DMI/">High-level task definitions (DEV_MANAGER writes, workers read)</RULE>
+    <RULE target="WOI/">Sequential specification files with incremental counters</RULE>
+    <RULE target="WOutput/">Generated code and build artifacts from worker execution</RULE>
+  </LISL_SHARDING_PROTOCOL>
+
+  <WINDOWS_API_INTEGRATION>
+    <SPEC>InputHooks class implements User32.dll keyboard/mouse hooks, capturing key press/release events, mouse clicks, movement, and wheel scrolling with thread-safe management.</SPEC>
+  </WINDOWS_API_INTEGRATION>
+
+  <WAD_FILE_HANDLING>
+    <SPEC>WadFileHandler provides standard file I/O for WAD lumps, supports PWAD/DOOM format magic numbers, parses lump directory entries, and loads individual lumps by name with error handling.</SPEC>
+  </WAD_FILE_HANDLING>
+
+  <EXPECTED_OUTPUT_STATUS>
+    <STATUS>Directory structure fully established</STATUS>
+	
+	<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <AGENT_ID>BADGERMAN9999_INVENTOR</AGENT_ID>
+    <ROLE>LISL_METHODOLOGY_SPECIFICATION</ROLE>
+    <VERSION>1.0</VERSION>
+    <STAMP_FORMAT>[LISL_METHOD]</STAMP_FORMAT>
+    <REASONING>high</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <TITLE>Local Instruction State Loop (LISL): Methodological Specification & Data Extraction Guide</TITLE>
+    <PURPOSE>Overcome attention drift, KV-cache explosion, and memory bandwidth bottlenecks by replacing cloud-dependent chat wrappers with structured markdown instruction files and dynamic state pruning[cite: 12].</PURPOSE>
+  </CORE_DIRECTIVE>
+
+  <INVENTOR_BACKGROUND>
+    <AUTHOR>BadgerMan9999 (BadgerSoft Productions)</AUTHOR>
+    <HISTORY>Learned DOS in 1984 at age 3 on a Delta computer with amber monochrome CRT[cite: 12], built first 386SX system at age 10.</HISTORY>
+    <PHILOSOPHY>Efficiency on x86 systems; creating a deterministic file-bus architecture for agentic loops to bypass bloated commercial frameworks (LangGraph, AutoGen) and heavy API token overhead[cite: 12].</PHILOSOPHY>
+  </INVENTOR_BACKGROUND>
+
+  <CORE_ARCH_MECHANICS>
+    <MECHANIC name="Deterministic File-Bus Loops">Execution state passes between iterations exclusively via structured files rather than a continuous chat buffer[cite: 12].</MECHANIC>
+    <MECHANIC name="Dynamic State Pruning">Completed sub-tasks and redundant traces are aggressively purged; only active micro-chunks feed the next cycle[cite: 12].</MECHANIC>
+    <MECHANIC name="Model-Specific Instruction Engineering">Instruction sets compiled to match target model cognitive profiles and parameter constraints[cite: 12].</MECHANIC>
+    <MECHANIC name="Zero Cloud Dependency">Air-gapped local execution bounded entirely by hardware resource limits[cite: 12].</MECHANIC>
+  </CORE_ARCH_MECHANICS>
+
+  <MATHEMATICAL_METRIC>
+    <NAME>Task Compression Rate (TCR)</NAME>
+    <FORMULA>TCR = (Total Completed Units of Work) / (Cumulative Token Consumption)</FORMULA>
+    <BEHAVIOR>Negative token acceleration; TCR scales positively (exceeding 1.15+ during GBA architecture compilation) as problem spaces narrow and noise is eliminated[cite: 12].</BEHAVIOR>
+  </MATHEMATICAL_METRIC>
+
+  <HARDWARE_BOUNDARY_CONDITIONS>
+    <TIER class="12B Class">Gemma 4 12B QAT on Intel Core i5 8th Gen, 32GB DDR4 RAM, NVIDIA RTX 3050 6GB VRAM[cite: 12].</TIER>
+    <TIER class="9B Class">Qwen 3.5 validation tier for instruction adherence and compression efficiency[cite: 12].</TIER>
+    <TIER class="2.8GB VRAM Edge Class">Nemotron Nano 2B masterclass edge benchmark executing 37 continuous iterations[cite: 12].</TIER>
+  </HARDWARE_BOUNDARY_CONDITIONS>
+
+  <FILE_EXTENSION_INNOVATION>
+    <EXT_NAME>.lisl</EXT_NAME>
+    <PURPOSE>Windows file association script links .lisl directly to models inside LM Studio, LM Bionic, and Beledarian tools. Separates executable LISL instructions from passive .xml training files to prevent model confusion and ensure workspace truthfulness.</PURPOSE>
+  </FILE_EXTENSION_INNOVATION>
+</LISL_MANIFEST>
+
+<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <AGENT_ID>LM_STUDIO_BIONIC_PARSER</AGENT_ID>
+    <ROLE>BIONIC_FRAMEWORK_DOCUMENTATION</ROLE>
+    <VERSION>1.0</VERSION>
+    <STAMP_FORMAT>[LM_BIONIC]</STAMP_FORMAT>
+    <REASONING>medium</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <TITLE>LM Studio Bionic Overview</TITLE>
+    <PURPOSE>Next-generation LM Studio designed for agentic work with open models, including coding, research, and complex work with documents and files[cite: 13].</PURPOSE>
+  </CORE_DIRECTIVE>
+
+  <KEY_CAPABILITIES>
+    <CAPABILITY name="Agentic Harness">Excellent for coding and working with documents[cite: 13].</CAPABILITY>
+    <CAPABILITY name="Multi-Session Workflows">Create separate sessions for separate tasks within a project; run multiple sessions across projects to parallelize workflows[cite: 13].</CAPABILITY>
+  </KEY_CAPABILITIES>
+
+  <EXECUTION_MODES>
+    <MODE type="Frontier Cloud">Frontier open models running in LM Studio Secure Cloud with Zero Data Retention[cite: 13].</MODE>
+    <MODE type="Local">Local models running directly on your computer hardware[cite: 13].</MODE>
+    <MODE type="Remote">Remote models from another device through LM Link[cite: 13].</MODE>
+  </EXECUTION_MODES>
+
+  <RELATIONSHIP_TO_LM_STUDIO>
+    <DETAIL>Bionic is a new, separate app from LM Studio. Advanced low-level configuration can be handled by running LM Studio alongside Bionic[cite: 13].</DETAIL>
+  </RELATIONSHIP_TO_LM_STUDIO>
+</LISL_MANIFEST>
+
+<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <AGENT_ID>LM_STUDIO_PARSER</AGENT_ID>
+    <ROLE>LM_STUDIO_DOCUMENTATION</ROLE>
+    <VERSION>1.0</VERSION>
+    <STAMP_FORMAT>[LM_STUDIO]</STAMP_FORMAT>
+    <REASONING>medium</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <TITLE>LM Studio Documentation Overview</TITLE>
+    <PURPOSE>Local model execution, developer tooling, SDKs, and workflow integrations for macOS, Windows, and Linux[cite: 14].</PURPOSE>
+  </CORE_DIRECTIVE>
+
+  <DOCUMENTATION_SECTIONS>
+    <SECTION name="Bionic">Learn how to use LM Studio Bionic[cite: 14].</SECTION>
+    <SECTION name="Developer">Build with local REST APIs, OpenAI-compatible APIs, and developer tooling[cite: 14].</SECTION>
+    <SECTION name="Python SDK">Use lmstudio-python to load models, generate text, embed content, and build agents[cite: 14].</SECTION>
+    <SECTION name="TypeScript SDK">Use lmstudio-js in Node.js or TypeScript apps for local model workflows and plugins[cite: 14].</SECTION>
+    <SECTION name="CLI">Use lms for chat, model downloads, daemon management, server control, and publishing[cite: 14].</SECTION>
+    <SECTION name="Integrations">Connect LM Studio to Codex, Claude Code, OpenClaw, MCP tools, and remote workflows[cite: 14].</SECTION>
+    <SECTION name="LM Link">Set up LM Link to route local AI workloads across devices and preferred machines[cite: 14].</SECTION>
+  </DOCUMENTATION_SECTIONS>
+
+  <KEY_CAPABILITIES>
+    <CAPABILITY>Download and run local LLMs like gpt-oss, Llama, Qwen, Mistral, or DeepSeek R1[cite: 14].</CAPABILITY>
+    <CAPABILITY>Use a simple and flexible chat interface[cite: 14].</CAPABILITY>
+    <CAPABILITY>Connect MCP servers and use them with local models[cite: 14].</CAPABILITY>
+    <CAPABILITY>Search and download functionality via Hugging Face[cite: 14].</CAPABILITY>
+    <CAPABILITY>Serve local models on OpenAI-like endpoints, locally and on the network[cite: 14].</CAPABILITY>
+    <CAPABILITY>Manage local models, prompts, and configurations[cite: 14].</CAPABILITY>
+  </KEY_CAPABILITIES>
+
+  <SYSTEM_REQUIREMENTS_AND_RUNTIMES>
+    <PLATFORMS>macOS, Windows (x64/ARM64), and Linux (x64)[cite: 14].</PLATFORMS>
+    <RUNTIMES>llama.cpp (GGUF) on Mac/Windows/Linux; MLX on Apple Silicon Macs[cite: 14].</RUNTIMES>
+  </SYSTEM_REQUIREMENTS_AND_RUNTIMES>
+
+  <ADVANCED_FEATURES>
+    <FEATURE name="RAG">Chat with documents entirely offline on your computer[cite: 14].</FEATURE>
+    <FEATURE name="Headless Mode (llmster)">Run LM Studio without the GUI for servers and CI environments[cite: 14].</FEATURE>
+    <FEATURE name="APIs">OpenAI Compatibility API and LM Studio REST API (beta)[cite: 14].</FEATURE>
+  </ADVANCED_FEATURES>
+</LISL_MANIFEST>
+
+<LISL_SYS_SPEC arch="BadgerSoft_LISL" author="BadgerMan9999" mode="RAW_UTF8_DIRECT">
+  <EXT id=".lisl" class="LISL_LOOP_BUS" enc="XML_FUSION" read="DIRECT_BYTES" stamp="REQ_ID"/>
+  <EXT id=".xml"  class="PASSIVE_TRAIN" enc="STATIC_XML" read="REF_ONLY"     stamp="NONE"/>
+  <EXT id=".md"   class="HUMAN_DOC"     enc="MARKDOWN"   read="RW_TEXT"      stamp="NONE"/>
+  <EXT id=".json" class="PAYLOAD_CODE"  enc="STRICT_JSON" read="RW_DATA"     stamp="NONE"/>
+</LISL_SYS_SPEC>
+
+<LISL_MANIFEST arch="BadgerSoft_LISL" mode="XML_FUSION">
+  <HEADER>
+    <EMITTER>DEV_MANAGER_12B_QAT</EMITTER>
+    <TARGET>LISL_SHARDING_PROTOCOL_V1</TARGET>
+    <ID>DOOMREMAKE_LISL_SPEC_01</ID>
+    <VERSION>1.0</VERSION>
+    <STAMP_FORMAT>[DOOMREMAKE_LISL_SPEC_01]</STAMP_FORMAT>
+    <REASONING>high</REASONING>
+  </HEADER>
+
+  <CORE_DIRECTIVE>
+    <PURPOSE>Define the LISL (Logic Inference Script Language) sharding protocol for DoomRemake project automation[cite: 15].</PURPOSE>
+  </CORE_DIRECTIVE>
+
+  <DIRECTORY_STRUCTURE_PROTOCOL>
+    <DIRECTORY path="/DMI" name="Dev Manager Instructions">
+      <PURPOSE>Read-only source for high-level task definitions and specifications[cite: 15].</PURPOSE>
+      <ACCESS>DEV_MANAGER_12B_QAT write, read by all workers[cite: 15].</ACCESS>
+      <FILE_FORMAT>XML with standardized job specification schema[cite: 15].</FILE_FORMAT>
+      <NAMING_CONVENTION>Dev_Manger_{MODEL_ID}_{JOB_NAME}.XML[cite: 15]</NAMING_CONVENTION>
+    </DIRECTORY>
+
+    <DIRECTORY path="/WOI" name="Worker Order Instructions">
+      <PURPOSE>Output path for sequential counter files containing task specifications[cite: 15].</PURPOSE>
+      <ACCESS>DEV_MANAGER_12B_QAT writes, workers read and execute[cite: 15].</ACCESS>
+      <FILE_FORMAT>XML specification documents with incremental counters[cite: 15].</FILE_FORMAT>
+      <NAMING_CONVENTION>DoomRemake_Spec_{NUMBER}.xml[cite: 15]</NAMING_CONVENTION>
+    </DIRECTORY>
+
+    <DIRECTORY path="/WOutput" name="Worker Output">
+      <PURPOSE>Exclusive write zone for generated C# code, build artifacts, and worker results[cite: 15].</PURPOSE>
+      <ACCESS>Workers only write, DEV_MANAGER_12B_QAT reads for verification[cite: 15].</ACCESS>
+      <FILE_FORMAT>C#, XML, JSON, or binary as appropriate to subsystem[cite: 15].</FILE_FORMAT>
+      <NAMING_CONVENTION>Subsystem-specific with versioning[cite: 15]</NAMING_CONVENTION>
+    </DIRECTORY>
+  </DIRECTORY_STRUCTURE_PROTOCOL>
+
+  <SHARDING_WORKFLOW>
+    <STEP id="1">DEV_MANAGER writes task specification to `/WOI/DoomRemake_Spec_01.xml`[cite: 15].</STEP>
+    <STEP id="2">WORKER reads specification from `/WOI/`, executes tasks, outputs results to `/WOutput/`[cite: 15].</STEP>
+    <STEP id="3">WORKER creates `Finished.md` in `/WOutput/` when complete[cite: 15].</STEP>
+    <STEP id="4">DEV_MANAGER monitors for `Finished.md`, then parses `/WOutput/` for verification[cite: 15].</STEP>
+  </SHARDING_WORKFLOW>
+
+  <FILE_SIGNATURES>
+    <RULE>All files must include proper `[EMITTER:...]` tags at the beginning to identify their source and purpose[cite: 15]
