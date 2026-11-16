@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_COMPILE_01</ID>
+    <DESCRIPTION>Build System & Compilation Readiness</DESCRIPTION>
+    <PRE_REQUISITES>All previous layers completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <BUILD_TARGETS>Debug, Release, Shipping configurations.</BUILD_TARGETS>
+    <DEPENDENCY_GRAPH>Automated detection of source file dependencies for incremental builds.</DEPENDENCY_GRAPH>
+    <ASSET_PIPELINE>Tools to convert raw assets (WADs, textures) into engine-ready formats during build.</ASSET_PIPELINE>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="BuildConfig">Configuration for include paths, preprocessor definitions, and linker flags.</COMPONENT>
+    <SYSTEM name="AssetCompiler">Tooling to bake/compress textures and compile shaders into binary formats.</SYSTEM>
+    <SYSTEM name="LinkerCheck">Validation of all symbols and external dependencies before final linking.</SYSTEM>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Configure CMake for multiple build configurations (Debug/Release).</ACTION>
+    <ACTION order="2">Establish a pre-build step to compile shaders into binary formats.</ACTION>
+    <ACTION order="3">Create an asset baking script to process textures and models during the build phase.</ACTION>
+    <ACTION order="4">Perform a full clean build of all source files to verify compilation readiness.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>COMPILATION_COMPLETE</NEXT_STEP>
+</LISL_INSTRUCTION>

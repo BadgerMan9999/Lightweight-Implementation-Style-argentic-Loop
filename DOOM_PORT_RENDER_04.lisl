@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_RENDER_04</ID>
+    <DESCRIPTION>Lighting & Shadows</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_RENDER_03 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <LIGHT_SOURCE>Point, Directional, and Spot light definitions.</LIGHT_SOURCE>
+    <SHADOW_MAPPER>Shadow mapping system (Depth textures/shadow buffers).</SHADOW_MAPPER>
+    <PBR_BASIC>Standardized Material properties for lighting interaction (Roughness, Metallic, Albedo).</PBR_BASIC>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="Light">Position, Color, Intensity, Range.</COMPONENT>
+    <SYSTEM name="ShadowPass">Logic to render depth maps and apply shadow projection.</SYSTEM>
+    <SYSTEM name="LightingSystem">Calculates final fragment colors based on light sources and materials.</SYSTEM>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement a basic Forward Rendering pass with multiple point lights.</ACTION>
+    <ACTION order="2">Create Shadow Map buffers for directional lighting.</ACTION>
+    <ACTION order="3">Develop the LightSource component and corresponding shader uniforms.</ACTION>
+    <ACTION order="4">Integrate shadow mapping into the main RenderBatcher logic.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_RENDER_05.lisl (Post-Processing & UI)</NEXT_STEP>
+</LISL_INSTRUCTION>

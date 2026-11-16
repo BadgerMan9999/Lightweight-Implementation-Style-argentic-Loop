@@ -1,0 +1,27 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_CORE_01</ID>
+    <DESCRIPTION>Memory Management System</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_INIT_02 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <SYSTEM name="LinearAllocator">Fast, contiguous allocation for frame-based data.</SYSTEM>
+    <SYSTEM name="PoolAllocator">Fixed-size block allocation for entities and common objects.</SYSTEM>
+    <SYSTEM name="HeapAllocator">General purpose wrapper around malloc/free with tracking.</SYSTEM>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="MemoryTracker">Track allocations by category (Graphics, Physics, GameLogic).</COMPONENT>
+    <COMPONENT name="Alignment">Enforce 16-byte alignment for SIMD operations.</COMPONENT>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement the LinearAllocator class in src/core/memory.hpp.</ACTION>
+    <ACTION order="2">Implement the PoolAllocator class for fixed-size objects.</ACTION>
+    <ACTION order="3">Create a MemoryTracker singleton to monitor usage per category.</ACTION>
+    <ACTION order="4">Write unit tests for allocation and deallocation limits.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_CORE_02.lisl (Logging and Error Handling)</NEXT_STEP>
+</LISL_INSTRUCTION>

@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_RENDER_01</ID>
+    <DESCRIPTION>Windowing and Context Initialization</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_CORE_03 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <API>Abstraction layer for Window Management (SDL2 or Win32).</API>
+    <CONTEXT>OpenGL 3.3+ Core Profile or Vulkan context management.</CONTEXT>
+    <INPUT>Polling system for keyboard, mouse, and controller state.</INPUT>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="WindowSystem">Handles window creation, resizing, and lifecycle events.</COMPONENT>
+    <COMPONENT name="InputManager">Maps raw hardware inputs to game actions (Action Mapping).</COMPONENT>
+    <COMPONENT name="Timer">High-resolution delta time calculation for frame independent movement.</COMPONENT>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Integrate SDL2 as the primary windowing and input library.</ACTION>
+    <ACTION order="2">Create a Window class to manage lifecycle (Init, PollEvents, Shutdown).</ACTION>
+    <ACTION order="3">Implement a basic InputManager that captures mouse coordinates and key states.</ACTION>
+    <ACTION order="4">Initialize the high-resolution timer for delta time calculation.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_RENDER_02.lisl (Shader Pipeline & Vertex Buffers)</NEXT_STEP>
+</LISL_INSTRUCTION>

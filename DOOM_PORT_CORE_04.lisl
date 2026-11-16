@@ -1,0 +1,29 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_CORE_04</ID>
+    <DESCRIPTION>Entity Component System (ECS)</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_RENDER_03 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <ENTITY_MANAGER>Handles creation, destruction, and ID management of Entities.</ENTITY_MANAGER>
+    <COMPONENT_STORE>Contiguous memory storage for components to maximize cache locality.</COMPONENT_STORE>
+    <SYSTEM_PROCESSOR>Logic loops that iterate over entities with specific component signatures.</SYSTEM_PROCESSOR>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="Transform">Position, Rotation, Scale (Vec3/Quat).</COMPONENT>
+    <COMPONENT name="Velocity">Linear and Angular velocity vectors.</COMPONENT>
+    <COMPONENT name="Renderable">Reference to Mesh and Material for the renderer.</COMPONENT>
+    <COMPONENT name="Collider">Bounding box or sphere data for physics interaction.</COMPONENT>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement a basic EntityID registry and EntityManager class.</ACTION>
+    <ACTION order="2">Create Component storage using contiguous arrays (SoA approach).</ACTION>
+    <ACTION order="3">Develop the 'MovementSystem' as a prototype processor for Transform/Velocity components.</ACTION>
+    <ACTION order="4">Implement an Entity Factory to simplify creation of common types (Player, Enemy, Item).</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_CORE_05.lisl (Physics & Collision)</NEXT_STEP>
+</LISL_INSTRUCTION>

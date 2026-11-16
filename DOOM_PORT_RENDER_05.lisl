@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_RENDER_05</ID>
+    <DESCRIPTION>Post-Processing & UI</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_RENDER_04 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <POST_PROCESS_STACK>Sequential application of effects (Bloom, Tonemapping, FXAA).</POST_PROCESS_STACK>
+    <UI_SYSTEM>Overlay system for HUD and menus using SpriteBatcher.</UI_SYSTEM>
+    <FRAMEBUFFER_OBJECTS>Offscreen rendering targets for multi-pass effects.</FRAMEBUFFER_OBJECTS>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="PostProcessEffect">Base class for screen-space effects.</COMPONENT>
+    <COMPONENT name="UIRenderer">Handles z-layering and text/sprite drawing for UI elements.</COMPONENT>
+    <SYSTEM name="RenderPipeline">Orchestrates the sequence: Shadow Pass -> Geometry Pass -> Post-Process -> UI.</SYSTEM>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement a basic Framebuffer system for offscreen rendering.</ACTION>
+    <ACTION order="2">Create a simple Tonemapping and Gamma Correction shader.</ACTION>
+    <ACTION order="3">Develop the UIRenderer using the existing SpriteBatcher.</ACTION>
+    <ACTION order="4">Finalize the RenderPipeline sequence to combine all previous rendering steps.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_COMPILE_01.lisl (Build System & Compilation Readiness)</NEXT_STEP>
+</LISL_INSTRUCTION>

@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_RENDER_02</ID>
+    <DESCRIPTION>Shader Pipeline & Vertex Buffers</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_RENDER_01 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <SHADER_MANAGER>Handles loading, compiling, and binding of GLSL shaders.</SHADER_MANAGER>
+    <BUFFER_SYSTEM>Abstraction for Vertex Buffer Objects (VBO) and Index Buffer Objects (IBO).</BUFFER_SYSTEM>
+    <MATERIAL_SYSTEM>Basic material structure to hold shader uniforms (texture handles, colors).</MATERIAL_SYSTEM>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="Shader">Class for managing Shader Program IDs and Uniform locations.</COMPONENT>
+    <COMPONENT name="Mesh">Container for Vertex/Index data and associated Material.</COMPONENT>
+    <COMPONENT name="RenderBatch">System to group draw calls by material/shader to minimize state changes.</COMPONENT>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement the Shader class with LoadFromFile() functionality.</ACTION>
+    <ACTION order="2">Create a Mesh class that handles VBO/IBO generation and binding.</ACTION>
+    <ACTION order="3">Develop a basic RenderBatcher to group draw calls by Material ID.</ACTION>
+    <ACTION order="4">Write unit tests for shader compilation success/failure reporting.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_RENDER_03.lisl (Texture & Sprite Management)</NEXT_STEP>
+</LISL_INSTRUCTION>

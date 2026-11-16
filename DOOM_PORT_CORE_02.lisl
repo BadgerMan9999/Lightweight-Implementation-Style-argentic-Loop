@@ -1,0 +1,27 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_CORE_02</ID>
+    <DESCRIPTION>Logging and Error Handling</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_CORE_01 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <LOGGING_SYSTEM>
+    <LEVELS>DEBUG, INFO, WARNING, ERROR, CRITICAL</LEVELS>
+    <OUTPUT_TARGETS>Console (stdout), File, In-game Debug Overlay.</OUTPUT_TARGETS>
+    <FEATURES>Thread-safety, Timestamping, Color coding for console output.</FEATURES>
+  </LOGGING_SYSTEM>
+
+  <ERROR_HANDLING>
+    <MECHANISM>Result<T> pattern or ErrorCode return types (avoiding heavy exceptions where possible).</MECHANISM>
+    <BREAKPOINTS>Automatic breakpoint on CRITICAL errors in Debug builds.</BREAKPOINTS>
+  </ERROR_HANDLING>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement the logger singleton with thread-safe writing to stdout.</ACTION>
+    <ACTION order="2">Add file output support with automatic rotation or size limits.</ACTION>
+    <ACTION order="3">Define a standard Result type for core system calls.</ACTION>
+    <ACTION order="4">Integrate logging into the Memory Management System (CORE_01).</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_CORE_03.lisl (Math Library)</NEXT_STEP>
+</LISL_INSTRUCTION>

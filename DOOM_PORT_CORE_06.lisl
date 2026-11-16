@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_CORE_06</ID>
+    <DESCRIPTION>Scene Graph & Level Loading</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_CORE_05 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <SCENE_NODE>Hierarchical node for parent-child transformations.</SCENE_NODE>
+    <LEVEL_DATA>Structure for loading static geometry, actors, and dynamic lights from files.</LEVEL_DATA>
+    <RESOURCE_LOADER>Asynchronous loader for models, textures, and sounds.</RESOURCE_LOADER>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="SceneNode">Local/World transform matrices and parent pointers.</COMPONENT>
+    <SYSTEM name="LevelLoader">Parser for a custom level format (or JSON-based prototype).</SYSTEM>
+    <SYSTEM name="SceneUpdater">Recursive update of world transforms based on hierarchy.</SYSTEM>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement the SceneNode class and recursive transform update logic.</ACTION>
+    <ACTION order="2">Create a JSON-based Level definition format for testing.</ACTION>
+    <ACTION order="3">Develop a basic LevelLoader that instantiates entities based on level data.</ACTION>
+    <ACTION order="4">Implement an asynchronous loading queue to prevent main thread stalls.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_RENDER_04.lisl (Lighting & Shadows)</NEXT_STEP>
+</LISL_INSTRUCTION>

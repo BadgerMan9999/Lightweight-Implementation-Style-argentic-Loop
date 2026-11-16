@@ -1,0 +1,30 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_INIT_02</ID>
+    <DESCRIPTION>Core Engine Header Definitions</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_INIT_01 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <CORE_TYPES>
+    <DEFINITION name="Vec3">Structure for 3D vectors (x, y, z) with basic arithmetic.</DEFINITION>
+    <DEFINITION name="Quat">Structure for Quaternions for rotation.</DEFINITION>
+    <DEFINITION name="Matrix4x4">4x4 Transformation Matrix.</DEFINITION>
+    <DEFINITION name="EntityID">Unique identifier for game objects (uint64_t).</DEFINITION>
+  </CORE_TYPES>
+
+  <HEADER_STRUCTURE>
+    <FILE path="src/core/types.hpp">Basic math types and constants.</FILE>
+    <FILE path="src/core/logging.hpp">Logging macros and singleton logger interface.</FILE>
+    <FILE path="src/core/memory.hpp">Memory allocation wrappers and pool definitions.</FILE>
+    <FILE path="src/core/errors.hpp">Error codes and exception handling definitions.</FILE>
+  </HEADER_STRUCTURE>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Create the 'src/core' directory structure.</ACTION>
+    <ACTION order="2">Implement basic math structures in types.hpp.</ACTION>
+    <ACTION order="3">Define logging levels and a thread-safe logger skeleton in logging.hpp.</ACTION>
+    <ACTION order="4">Establish memory alignment constants for SIMD compatibility.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_CORE_01.lisl (Memory Management System)</NEXT_STEP>
+</LISL_INSTRUCTION>

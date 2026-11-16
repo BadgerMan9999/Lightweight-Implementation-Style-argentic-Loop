@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_CORE_05</ID>
+    <DESCRIPTION>Physics & Collision</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_CORE_04 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <COLLISION_WORLD>Spatial partitioning system (e.g., Octree or BVH) for broad-phase collision.</COLLISION_WORLD>
+    <PHYSICS_SOLVER>Simple AABB and Sphere intersection tests for narrow-phase.</PHYSICS_SOLVER>
+    <RAYCASTING>System for line-of-sight, projectile physics, and interaction detection.</RAYCASTING>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="RigidBody">Mass, Friction, Restitution data.</COMPONENT>
+    <COMPONENT name="TriggerVolume">Non-solid areas that trigger events on entry/exit.</COMPONENT>
+    <SYSTEM name="CollisionSystem">Iterates over active entities to resolve overlaps and generate contact points.</SYSTEM>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement AABB (Axis-Aligned Bounding Box) intersection logic.</ACTION>
+    <ACTION order="2">Create a basic Octree for spatial partitioning of static geometry.</ACTION>
+    <ACTION order="3">Develop the Raycast function with support for multiple collision layers.</ACTION>
+    <ACTION order="4">Integrate CollisionSystem into the main game loop update sequence.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_CORE_06.lisl (Scene Graph & Level Loading)</NEXT_STEP>
+</LISL_INSTRUCTION>

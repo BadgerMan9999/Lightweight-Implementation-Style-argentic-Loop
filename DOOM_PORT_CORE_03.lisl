@@ -1,0 +1,26 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_CORE_03</ID>
+    <DESCRIPTION>Math Library</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_CORE_02 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <COMPONENTS>
+    <COMPONENT name="Vector3">Addition, Subtraction, Dot Product, Cross Product, Magnitude, Normalization.</COMPONENT>
+    <COMPONENT name="Quaternion">Rotation application, Interpolation (Slerp), Conjugate, Identity.</COMPONENT>
+    <COMPONENT name="Matrix4x4">Translation, Rotation, Scaling, Perspective Projection, LookAt matrices.</COMPONENT>
+  </COMPONENTS>
+
+  <OPTIMIZATIONS>
+    <TECHNIQUE>Use SIMD intrinsics for 4-wide vector operations where applicable.</TECHNIQUE>
+    <TECHNIQUE>Inline all basic arithmetic operations in headers.</TECHNIQUE>
+  </OPTIMIZATIONS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement Vector3 and Quat types in src/core/types.hpp.</ACTION>
+    <ACTION order="2">Implement Matrix4x4 multiplication and transformation methods.</ACTION>
+    <ACTION order="3">Add unit tests for all math operations against known values.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_RENDER_01.lisl (Windowing & Context)</NEXT_STEP>
+</LISL_INSTRUCTION>

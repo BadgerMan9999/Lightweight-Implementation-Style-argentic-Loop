@@ -1,0 +1,33 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_INIT_01</ID>
+    <DESCRIPTION>Project Initialization and Environment Setup</DESCRIPTION>
+    <PRE_REQUISITES>Windows 10, Visual Studio (MSVC Toolchain), CMake</PRE_REQUISITES>
+  </HEADER>
+
+  <STRUCTURE_DEFINITION>
+    <ROOT>F:\BadgerSoft\DoomRemake\</ROOT>
+    <SUB_FOLDERS>
+      <FOLDER name="src" description="C++ Source files for the engine and game logic."/>
+      <FOLDER name="resources" description="WADs, textures, sounds, and other assets."/>
+      <FOLDER name="build" description="Build artifacts (ignored by version control)."/>
+      <FOLDER name="tools" description="Custom build tools and utilities."/>
+      <FOLDER name="docs" description="Technical documentation and design specs."/>
+    </SUB_FOLDERS>
+  </STRUCTURE_DEFINITION>
+
+  <ENVIRONMENT_CONFIG>
+    <COMPILER>MSVC (Microsoft Visual C++)</COMPILER>
+    <BUILD_SYSTEM>CMake</BUILD_SYSTEM>
+    <LANGUAGE_STANDARD>C++17</LANGUAGE_STANDARD>
+    <ARCHITECTURE>x64</ARCHITECTURE>
+  </ENVIRONMENT_CONFIG>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Create the directory structure as defined in STRUCTURE_DEFINITION.</ACTION>
+    <ACTION order="2">Initialize a Git repository at the ROOT (excluding 'build' folder).</ACTION>
+    <ACTION order="3">Create a basic CMakeLists.txt file to verify toolchain connectivity.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_INIT_02.lisl (Core Engine Header Definitions)</NEXT_STEP>
+</LISL_INSTRUCTION>

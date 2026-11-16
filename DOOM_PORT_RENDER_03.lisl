@@ -1,0 +1,28 @@
+<LISL_INSTRUCTION set="DOOM_PORT_WINDOWS_LAYERS_01" version="1.0">
+  <HEADER>
+    <ID>DOOM_PORT_RENDER_03</ID>
+    <DESCRIPTION>Texture & Sprite Management</DESCRIPTION>
+    <PRE_REQUISITES>DOOM_PORT_RENDER_02 completed</PRE_REQUISITES>
+  </HEADER>
+
+  <ARCHITECTURE>
+    <TEXTURE_MANAGER>Handles loading, caching, and binding of 2D/3D textures.</TEXTURE_MANAGER>
+    <SPRITE_SYSTEM>Basic quad-based rendering for UI and 2D elements.</SPRITE_SYSTEM>
+    <SAMPLER_CONFIGS>Definitions for filtering (Linear, Nearest) and Mipmapping.</SAMPLER_CONFIGS>
+  </ARCHITECTURE>
+
+  <IMPLEMENTATION_DETAILS>
+    <COMPONENT name="Texture">Class to manage GL texture IDs, dimensions, and wrap modes.</COMPONENT>
+    <COMPONENT name="SpriteBatch">System for rendering multiple quads with a single draw call (dynamic vertex buffer).</COMPONENT>
+    <COMPONENT name="FontRenderer">Basic text rendering using a bitmap font or SDF characters.</COMPONENT>
+  </IMPLEMENTATION_DETAILS>
+
+  <INITIAL_ACTIONS>
+    <ACTION order="1">Implement Texture class with support for PNG/JPG loading via stb_image.</ACTION>
+    <ACTION order="2">Create the SpriteBatcher to handle dynamic vertex updates.</ACTION>
+    <ACTION order="3">Establish a texture cache (Map<Path, TextureID>) to prevent redundant loads.</ACTION>
+    <ACTION order="4">Implement basic UI text rendering using a simple bitmap font.</ACTION>
+  </INITIAL_ACTIONS>
+
+  <NEXT_STEP>DOOM_PORT_CORE_04.lisl (Entity Component System - ECS)</NEXT_STEP>
+</LISL_INSTRUCTION>
