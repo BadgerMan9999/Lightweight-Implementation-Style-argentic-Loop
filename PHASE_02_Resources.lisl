@@ -1,0 +1,74 @@
+# PHASE 02: RESOURCES & STATE MANAGEMENT - LISL Instruction Set
+# Target: [LISL_W]
+# Goal: Implement robust WAD parsing, resource management, and the high-level game state machine.
+
+[PREREQUISITES]
+- Phase 01 (Foundation) must be complete (Memory Manager, Job System, Vulkan Context).
+
+[SUCCESS CRITERIA]
+- The application can load a .wad file and report its contents.
+- Textures and Shaders are loaded into GPU memory correctly.
+- The game state can switch between "Menu" and "Game" states.
+
+---
+
+## LAYER 2.1: WAD BINARY PARSER
+[OBJECTIVE] Create a binary reader capable of parsing the Doom .wad format.
+
+[INSTRUCTIONS]
+1. Implement a `WadReader` class that wraps a file stream.
+2. Support reading "Lumps" (the basic unit of data in a WAD).
+3. Implement specific parsers for:
+    - **TEXTURES**: Read dimensions, bit depth, and pixel data.
+    - **SHADERS**: Read SPIR-V binary data.
+    - **MAPS**: Basic header parsing (not full BSP traversal yet).
+4. The parser must return a `ResourceMap` which indexes all lumps by name for O(1) lookup.
+
+[VALIDATION]
+- Load a standard Doom 1 .wad and print the names of all loaded textures to the console.
+
+---
+
+## LAYER 2.2: FILE I/O MANAGER & INDEXING
+[OBJECTIVE] Manage resource lifetimes and handle asynchronous loading.
+
+[INSTRUCTIONS]
+1. Create a `ResourceManager` class.
+2. Implement an **Asset Cache**: Use a dictionary to ensure each texture/shader is loaded into GPU memory only once.
+3. Implement **Reference Counting**: Resources should be unloaded when no longer referenced by the game state.
+4. Integrate with the `JobSystem`: File reading and WAD parsing must occur on background threads.
+
+[VALIDATION]
+- Verify that loading the same texture twice does not create two separate GPU allocations.
+
+---
+
+## LAYER 2.3: TEXTURE & SHADER MANAGEMENT
+[OBJECTIVE] Bridge the gap between CPU memory and Vulkan Descriptor Sets.
+
+[INSTRUCTIONS]
+1. Create a `Texture` object containing:
+    - `VkImage`, `VkDeviceMemory`, and `VkImageView`.
+    - A method to update/upload data using `vkCmdCopyBufferToImage`.
+2. Create a `Shader` object containing:
+    - `VkPipelineLayout` and the compiled `VkPipeline` (Graphics).
+3. Implement **Descriptor Set Management**: 
+    - Create a system to bind textures and shaders to pipelines dynamically.
+4. Ensure all GPU memory allocations use the `MemoryManager`'s pool/arena logic where appropriate for transient data.
+
+[VALIDATION]
+- Successfully create a Vulkan pipeline that uses a loaded shader and a loaded texture.
+
+---
+
+## LAYER 2.4: GAME STATE MACHINE
+[OBJECTIVE] Define the high-level flow of the application.
+
+[INSTRUCTIONS]
+1. Create a `GameState` abstract class with `Update(float dt)` and `Render()` methods.
+2. Implement `MenuState`: Handles basic UI interaction (placeholder for now).
+3. Implement `Game_RunningState`: The main loop that will eventually call the Rendering and Physics systems.
+4. Implement a `StateManager` to handle transitions between states (e.g., Menu -> Game).
+
+[VALIDATION]
+- The application starts in `MenuState`, and pressing 'Enter' switches it to `Game_RunningState`.

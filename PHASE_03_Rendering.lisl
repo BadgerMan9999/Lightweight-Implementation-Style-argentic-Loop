@@ -1,0 +1,72 @@
+# PHASE 03: RENDERING PIPELINE - LISL Instruction Set
+# Target: [LISL_W]
+# Goal: Implement the core rendering logic, including BSP traversal and geometry handling.
+
+[PREREQUISITES]
+- Phase 01 (Foundation) & Phase 02 (Resources) must be complete.
+
+[SUCCESS CRITERIA]
+- The engine can render a basic triangle using a shader.
+- The engine can traverse a simple BSP node structure.
+- Sprites are rendered with correct layering.
+
+---
+
+## LAYER 3.1: GEOMETRY & VERTEX BUFFERS
+[OBJECTIVE] Efficiently manage static and dynamic geometry on the GPU.
+
+[INSTRUCTIONS]
+1. Create a `Vertex` struct (Position, Normal, UV).
+2. Implement a `VertexBuffer` class that manages `VkBuffer` and `VkDeviceMemory`.
+3. Implement a **Dynamic Buffer** for moving entities:
+    - Use a ring-buffer or double-buffering strategy to allow the CPU to write new positions while the GPU is reading previous ones.
+4. Create a `Mesh` class that holds vertex/index buffers and handles drawing calls.
+
+[VALIDATION]
+- Render a 3D cube using the `VertexBuffer` system.
+
+---
+
+## LAYER 3.2: BSP TRAVERSAL LOGIC
+[OBJECTIVE] Implement the Binary Space Partitioning (BSP) traversal required for Doom's world rendering.
+
+[INSTRUCTIONS]
+1. Define a `BSPNode` structure:
+    - Contains front/back planes, child nodes, and "leaf" data (textures, lights).
+2. Implement a **Recursive Traversal Function**:
+    - Given a camera position, determine which side of the plane the camera is on.
+    - Visit the correct children first to handle occlusion correctly.
+3. Implement **Culling**: Do not submit nodes to the renderer if they are behind the camera or occluded by closer planes.
+
+[VALIDATION]
+- Create a simple BSP tree (two intersecting planes) and verify that only visible faces are submitted for rendering.
+
+---
+
+## LAYER 3.3: SPRITE BATCHING
+[OBJECTIVE] Render dynamic actors (enemies, items) efficiently.
+
+[INSTRUCTIONS]
+1. Implement a `Sprite` class:
+    - Contains texture reference, position, rotation, and scale.
+2. Create a **Sprite Batcher**:
+    - Collect all sprites to be rendered in a single frame.
+    - Sort them by "Depth" (distance from camera) before submission.
+    - Submit as a single draw call where possible using instanced rendering or a large dynamic vertex buffer.
+
+[VALIDATION]
+- Render 100 moving sprites with correct depth sorting.
+
+---
+
+## LAYER 3.4: BASIC LIGHTING
+[OBJECTIVE] Implement the lighting model for the environment.
+
+[INSTRUCTIONS]
+1. Create a `Light` struct (Position, Color, Intensity).
+2. Implement **Ambient Lighting**: A global color applied to all surfaces.
+3. Implement **Point Lights**: Calculate attenuation based on distance from the light source.
+4. Pass these values to the shaders via Uniform Buffer Objects (UBOs) or Push Constants.
+
+[VALIDATION]
+- Render a scene where an object's brightness changes as it moves closer to a point light.

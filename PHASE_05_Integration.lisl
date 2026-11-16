@@ -1,0 +1,62 @@
+# PHASE 05: INTEGRATION & FINALIZATION - LISL Instruction Set
+# Target: [LISL_W]
+# Goal: Finalize the port by adding audio, UI, and assembling the executable structure.
+
+[PREREQUISITES]
+- All previous Phases (01-04) must be complete.
+
+[SUCCESS CRITERIA]
+- The game is playable with sound effects and a visible HUD.
+- Input mappings are configurable via a file.
+- The application builds into a standalone .exe that starts the menu or game correctly.
+
+---
+
+## LAYER 5.1: AUDIO ENGINE
+[OBJECTIVE] Implement a software-mixed PCM audio system for sound effects and music.
+
+[INSTRUCTIONS]
+1. Create an `AudioEngine` class:
+    - Support loading `.wav` files (PCM data).
+    - Implement a **Software Mixer**:
+        - Mix multiple audio streams into a single output buffer.
+        - Apply basic volume control and panning.
+2. Use `waveOut` or a similar simple Win32 API for final output to the sound device.
+3. Ensure audio processing happens on a dedicated high-priority thread.
+
+[VALIDATION]
+- Play a "fire" sound effect when the fire button is pressed.
+
+---
+
+## LAYER 5.2: INPUT MAPPING & HUD
+[OBJECTIVE] Create a configurable input system and a functional Heads-Up Display (HUD).
+
+[INSTRUCTIONS]
+1. Implement an **Input Mapper**:
+    - Load key bindings from a `.json` or `.ini` file.
+    - Map physical keys to "Actions" (e.g., KEY_W -> MOVE_FORWARD).
+2. Create a `HUD` class:
+    - Render the player's health, ammo count, and crosshair using the Sprite Batcher from Phase 03.
+    - Update values every frame based on Actor state.
+
+[VALIDATION]
+- The HUD correctly displays changing health/ammo values during gameplay.
+
+---
+
+## LAYER 5.3: FINAL ASSEMBLY & ENTRY POINT
+[OBJECTIVE] Finalize the project structure and build the executable.
+
+[INSTRUCTIONS]
+1. Create a `Game` class as the main entry point:
+    - Initialize all systems in order (Memory -> Threading -> Vulkan -> Resources -> GameState).
+    - Handle graceful shutdown of all systems on exit.
+2. Organize the project directory structure for production:
+    - `/bin`: Executable and DLLs.
+    - `/data`: WAD files, textures, sounds.
+    - `/config`: Input mappings and settings.
+3. Create a `Main` method that initializes the `Game` class and enters the main loop.
+
+[VALIDATION]
+- The project compiles into a standalone executable that launches the game correctly with all systems initialized.

@@ -1,0 +1,75 @@
+# PHASE 04: GAMEPLAY SYSTEMS - LISL Instruction Set
+# Target: [LISL_W]
+# Goal: Implement collision detection, movement physics, and the Actor/Entity system.
+
+[PREREQUISITES]
+- Phase 01 (Foundation) & Phase 03 (Rendering) must be complete.
+
+[SUCCESS CRITERIA]
+- The player character can move in a 3D space with collisions.
+- Enemies can exist as "Actors" with independent logic states.
+- Projectiles can be fired and collide with walls/actors.
+
+---
+
+## LAYER 4.1: COLLISION DETECTION
+[OBJECTIVE] Implement robust collision detection for the game world.
+
+[INSTRUCTIONS]
+1. Implement **AABB (Axis-Aligned Bounding Box)** checks for static geometry.
+2. Implement **Sphere-to-Sphere** and **Sphere-to-AABB** checks for dynamic actors.
+3. Create a `CollisionWorld` class:
+    - Use a spatial partition (e.g., a simple Grid or Octree) to limit the number of collision checks per frame.
+4. Provide an API for "Raycasting" to determine line-of-sight and projectile hits.
+
+[VALIDATION]
+- A moving sphere should stop when it hits a static AABB wall.
+
+---
+
+## LAYER 4.2: MOVEMENT PHYSICS
+[OBJECTIVE] Implement the player's movement physics (walking, jumping, friction).
+
+[INSTRUCTIONS]
+1. Create a `PhysicsBody` class:
+    - Properties: Velocity, Acceleration, Friction, Gravity.
+2. Implement **Kinematic Movement**:
+    - Calculate desired velocity based on input axes.
+    - Apply acceleration and friction to reach target velocity.
+3. Implement **Collision Resolution**:
+    - If a collision is detected, "slide" the character along the plane of contact to prevent sticking.
+
+[VALIDATION]
+- The player can move in 8 directions with smooth acceleration and stop when keys are released.
+
+---
+
+## LAYER 4.3: ENTITY SYSTEM (ACTORS)
+[OBJECTIVE] Create a system for game objects that have logic, state, and lifecycle.
+
+[INSTRUCTIONS]
+1. Implement an `Actor` base class:
+    - Properties: ID, Position, Velocity, Health, Renderable component.
+    - Methods: `Update(dt)`, `OnCollision()`.
+2. Create a **Component System**:
+    - Allow actors to have optional components (e.g., `AI_Component`, `Weapon_Component`).
+3. Implement an **Actor Manager**:
+    - Handle spawning, despawning, and the global update loop for all active entities.
+
+[VALIDATION]
+- Spawn 10 "Enemy" actors that move toward a target position independently.
+
+---
+
+## LAYER 4.4: PROJECTILE LOGIC
+[OBJECTIVE] Implement projectiles with physics and hit detection.
+
+[INSTRUCTIONS]
+1. Create a `Projectile` class (inherits from Actor):
+    - Properties: Speed, Lifetime, Damage.
+2. Implement **Trajectory Calculation**:
+    - Projectiles should move in a straight line or follow a simple arc based on velocity.
+3. Integrate with the Collision System to detect hits and trigger "Damage" events on other Actors.
+
+[VALIDATION]
+- Firing a projectile should result in it hitting a wall or an enemy actor, reducing health/destroying the object.
