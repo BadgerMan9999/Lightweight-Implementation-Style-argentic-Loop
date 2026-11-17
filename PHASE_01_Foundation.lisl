@@ -13,62 +13,16 @@
 
 ---
 
-## LAYER 1.1: MEMORY ARCHITECTURE
-[OBJECTIVE] Implement a deterministic memory management system to minimize GC pressure in the main loop.
+## LAYER 1.1: MEMORY ARCHITECTURE [COMPLETED]
+[STATUS] MemoryManager singleton with Arena and Pool allocators implemented.
 
-[INSTRUCTIONS]
-1. Create a `MemoryManager` class as a singleton.
-2. Implement an **Arena Allocator**:
-    - Allows for rapid allocation of objects that share a lifetime (e.g., per-frame data).
-    - Must support 'Reset' to clear the entire arena at once.
-3. Implement a **Pool Allocator**:
-    - For fixed-size objects (e.g., Projectiles, Entities).
-    - Must use a linked list of free blocks to ensure O(1) allocation/deallocation.
-4. Implementation Detail: Use `NativeMemory.Alloc` and `NativeMemory.Free` (or `Marshal.AllocHGlobal`) for the backing buffers.
-5. Provide a `Memory_Allocate<T>(...)` method that defaults to the Pool Allocator but allows specifying an Arena.
+## LAYER 1.2: CONCURRENCY & LOGGING [COMPLETED]
+[STATUS] Logger with thread-safe console and file output, JobSystem with worker pool.
 
-[VALIDATION]
-- Verify that allocating 10,000 objects from a pool does not trigger a GC Collection.
+## LAYER 1.3: PLATFORM ABSTRACTION (PAL) [COMPLETED]
+[STATUS] Window class with Win32 message loop, InputManager for keyboard/mouse polling, Time class with QPC.
 
----
-
-## LAYER 1.2: CONCURRENCY & LOGGING
-[OBJECTIVE] Establish thread safety and a multi-threaded job system for parallel execution of logic/rendering.
-
-[INSTRUCTIONS]
-1. Create a `Logger` class:
-    - Thread-safe logging to `stdout` and `logs/session.log`.
-    - Support levels: Info, Warning, Error, Fatal.
-2. Implement a **JobSystem**:
-    - A fixed-size worker thread pool (Number of logical cores - 1).
-    - A thread-safe queue for `IJob` tasks.
-    - Implementation must use `ManualResetEventSlim` or similar for low-overhead signaling.
-3. Ensure the `MemoryManager` is thread-aware (use Thread-Local Arenas where applicable).
-
-[VALIDATION]
-- Execute 100 concurrent jobs and verify they complete without race conditions in the Logger.
-
----
-
-## LAYER 1.3: PLATFORM ABSTRACTION (PAL)
-[OBJECTIVE] Create a windowing system and input handler using raw Win32 API. No external libraries like GLFW or SDL allowed.
-
-[INSTRUCTIONS]
-1. Implement a `Window` class:
-    - Use `CreateWindowEx` to create a borderless/fullscreen window with Vulkan compatibility flags.
-    - Handle the standard Windows Message Loop (`GetMessage`, `DispatchMessage`).
-2. Implement an `InputManager`:
-    - Poll Win32 messages for keyboard and mouse state.
-    - Provide a way to query "IsKeyDown(Key)" and "GetMousePosition()".
-3. Create a `Time` class:
-    - Use `QueryPerformanceCounter` for high-resolution delta time calculation.
-
-[VALIDATION]
-- A window must open, be movable/resizable (if not borderless), and log key presses to the console.
-
----
-
-## LAYER 1.4: VULKAN BOOTSTRAP
+## LAYER 1.4: VULKAN BOOTSTRAP [PENDING]
 [OBJECTIVE] Initialize the Vulkan context required for rendering.
 
 [INSTRUCTIONS]

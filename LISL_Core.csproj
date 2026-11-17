@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Memory\MemoryManager.cs" Link="Memory\MemoryManager.cs" />
+    <Compile Include="..\Concurrency\Logger.cs" Link="Concurrency\Logger.cs" />
+    <Compile Include="..\Concurrency\JobSystem.cs" Link="Concurrency\JobSystem.cs" />
+    <Compile Include="..\PAL\Window.cs" Link="PAL\Window.cs" />
+    <Compile Include="..\PAL\Time.cs" Link="PAL\Time.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="..\PHASE_01_Foundation.lisl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
